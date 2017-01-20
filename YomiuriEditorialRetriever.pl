@@ -19,15 +19,7 @@ my $tree = HTML::TreeBuilder->new;
 $tree->parse($content);
 
 # DOM操作してトピックの部分だけ抜き出す。
-# <div id='topicsfb'><ul><li>....の部分を抽出する
-
-# my @items =  $tree->look_down('id', 'topicsfb')->find('li');
-# print $_->as_text."\n" for @items;
-
-#print ($tree->look_down("class", "archiveList")->look_down("class", "listItem news photoNone out1")->look_down("class", "listItemArticle")->extract_links('a', 'href'));
-#print ($tree->look_down("class", "listItemArticle");
-
+# <div class='listItemArticleHeaderWrapper'>...</div>内の部分を抽出する
 my @items =  $tree->look_down('class', 'listItemArticleHeaderWrapper');
 print $_->as_text."\n" for @items;
-
 
